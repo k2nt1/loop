@@ -76,12 +76,8 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(22px); }
+            from { opacity: 0; transform: translateY(15px); }
             to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
         }
 
         .container {
@@ -110,11 +106,6 @@
             direction: rtl;
         }
 
-        @keyframes borderRotate {
-            0%   { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         @keyframes floatBadge {
             0%, 100% { transform: translateY(0px); }
             50%       { transform: translateY(-6px); }
@@ -122,8 +113,6 @@
 
         /* ── Product image box ── */
         .product-img-wrap {
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.06s;
             position: relative;
         }
 
@@ -229,8 +218,6 @@
             font-weight: 900;
             line-height: 1.05;
             margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.08s;
         }
 
         .key-subtitle {
@@ -239,8 +226,6 @@
             line-height: 1.65;
             margin-bottom: 24px;
             max-width: 560px;
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.16s;
         }
 
         /* ── Status badges ── */
@@ -250,8 +235,6 @@
             gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 34px;
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.22s;
         }
 
         .status-badge {
@@ -268,10 +251,13 @@
         .badge-purple { background: var(--accent-badge-bg); border: 1px solid rgba(138,43,226,0.35); color: var(--accent-light); }
         .badge-gray   { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-sub); }
 
-        /* ── Features section ── */
+        /* ── Features section (الانيميشن هنا فقط عند التبديل) ── */
         .features-section {
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.3s;
+            opacity: 1;
+        }
+
+        .key-section.active .features-section {
+            animation: fadeUp 0.4s ease forwards;
         }
 
         .features-label {
@@ -285,23 +271,6 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
-        }
-
-        .features-flat-grid--three {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .features-flat-grid--three .feat-item {
-            padding: 11px 12px;
-            font-size: 12.5px;
-        }
-
-        @media (max-width: 1080px) {
-            .features-flat-grid--three { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 780px) {
-            .features-flat-grid--three { grid-template-columns: 1fr; }
         }
 
         .feat-item {
@@ -335,8 +304,6 @@
             align-items: flex-start;
             gap: 12px;
             margin-top: 24px;
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.38s;
         }
 
         .info-banner svg { flex-shrink: 0; margin-top: 1px; }
@@ -349,8 +316,6 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 24px;
-            opacity: 0;
-            animation: fadeUp 0.5s ease forwards 0.14s;
         }
 
         .panel-label {
@@ -360,7 +325,6 @@
             margin-bottom: 14px;
         }
 
-        /* duration picker */
         .duration-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -400,13 +364,6 @@
 
         .dur-btn.active .dur-period { color: var(--accent-light); }
 
-        .dur-price {
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--text-white);
-        }
-
-        /* price display */
         .panel-price-display {
             font-size: 36px;
             font-weight: 900;
@@ -530,7 +487,6 @@
 
         .page-wrap { padding: 36px 0 100px; }
 
-        /* ── Tier selector (inside purchase panel) ── */
         .tier-btn-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -756,10 +712,24 @@
         function switchTier(key) {
             var valid = ['rank', 'light'];
             if (!valid.includes(key)) key = 'rank';
+            
             valid.forEach(function (k) {
                 var el = document.getElementById(k);
-                if (el) el.classList.toggle('active', k === key);
+                if (el) {
+                    el.classList.remove('active');
+                    if (k === key) {
+                        // إعادة إعادة تشغيل الأنميشن بقسم الميزات فقط
+                        var featSec = el.querySelector('.features-section');
+                        if (featSec) {
+                            featSec.style.animation = 'none';
+                            featSec.offsetHeight; /* trigger reflow */
+                            featSec.style.animation = null;
+                        }
+                        el.classList.add('active');
+                    }
+                }
             });
+
             document.querySelectorAll('.tier-btn').forEach(function(btn) {
                 btn.classList.toggle('active', btn.getAttribute('data-tier') === key);
             });
