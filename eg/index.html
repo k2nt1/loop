@@ -363,7 +363,7 @@
         /* duration picker */
         .duration-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             margin-bottom: 20px;
         }
@@ -466,9 +466,8 @@
 
         .panel-divider { height: 1px; background: var(--border-color); margin: 12px 0; }
 
-        /* Hidden key sections */
-        .key-section { display: none; }
-        .key-section.active { display: block; }
+        /* Key section */
+        .key-section { display: block; }
 
         /* Navbar */
         .navbar {
@@ -632,105 +631,19 @@
 
                     <div class="page-right">
                         <div class="purchase-panel">
-                            <div class="panel-label">اختر مستوى المفتاح</div>
-                            <div class="tier-btn-grid">
-                                <button class="tier-btn active" data-tier="rank" onclick="switchTier('rank')">
-                                    <span class="tier-btn-name">مفتاح رانك</span>
-                                </button>
-                                <button class="tier-btn" data-tier="light" onclick="switchTier('light')">
-                                    <span class="tier-btn-name">مفتاح لايت</span>
-                                </button>
-                            </div>
-                            <div class="panel-divider"></div>
                             <div class="panel-label">اختر المدة</div>
                             <div class="duration-grid">
-                                <button class="dur-btn active" data-price="600 جنيه" onclick="selectDur(this,'rank')">
+                                <button class="dur-btn active" data-price="249 جنيه" onclick="selectDur(this,'rank')">
+                                    <div class="dur-period">أسبوعي</div>
+                                </button>
+                                <button class="dur-btn" data-price="549 جنيه" onclick="selectDur(this,'rank')">
                                     <div class="dur-period">شهري</div>
                                 </button>
-                                <button class="dur-btn" data-price="1000 جنيه" onclick="selectDur(this,'rank')">
+                                <button class="dur-btn" data-price="1049 جنيه" onclick="selectDur(this,'rank')">
                                     <div class="dur-period">موسمي</div>
                                 </button>
                             </div>
-                            <div class="panel-price-display" id="rank-price">600 جنيه</div>
-                            <div class="panel-price-note">دفعة واحدة · تسليم فوري</div>
-                            <a href="https://t.me/k2nt1" target="_blank" class="buy-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                                <span>اشترِ الآن</span>
-                            </a>
-                            <div class="panel-divider"></div>
-                            <div class="panel-meta">
-                                <div class="meta-row"><span class="meta-key">التسليم</span><span class="meta-val green">فوري</span></div>
-                                <div class="meta-row"><span class="meta-key">الدعم</span><span class="meta-val">ديسكورد / تيليجرام</span></div>
-                                <div class="meta-row"><span class="meta-key">الحالة</span><span class="meta-val accent">غير مكتشف</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ══════════════════════ LIGHT KEY ══════════════════════ -->
-            <div id="light" class="key-section">
-                <div class="page-layout">
-                    <div class="page-img">
-                        <div class="product-img-wrap">
-                            <div class="product-img-glow"></div>
-                            <div class="product-img-border">
-                                <div class="product-img-box">
-                                    <img src="../4c384148-b6cb-4449-9ecc-09e0e3022aac.jpg" alt="نيكسوس لوب مفتاح لايت" loading="lazy">
-                                    <div class="product-img-overlay"></div>
-                                    <div class="product-img-corner">غير مكتشف</div>
-                                    <div class="product-img-label">مفتاح لايت</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-left">
-                        <div class="key-game-label">ببجي موبايل / جيم لوب 32 | 64</div>
-                        <h1 class="key-title">مفتاح لايت</h1>
-                        <p class="key-subtitle">خفيف وسريع. كشف اماكن الاعداء ومساعد تصويب لتبدأ بسرعة وبتكلفة مناسبة.</p>
-
-                        <div class="status-row">
-                            <span class="status-badge badge-green"><svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg><span>غير مكتشف</span></span>
-                            <span class="status-badge badge-gray">فئة كشف</span>
-                            <span class="status-badge badge-gray">وصول فوري</span>
-                        </div>
-
-                        <div class="features-section">
-                            <div class="features-label">الميزات المتضمنة</div>
-                            <div class="features-flat-grid">
-                                <div class="feat-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>كشف اماكن</span></div>
-                                <div class="feat-item"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>إيم أسيست</span></div>
-                            </div>
-                        </div>
-
-                        <div class="info-banner">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                            <p>إذا تعذر شراء أي منتج، <strong>فهو حالياً تحت الصيانة</strong> وسيتم استعادته في أقرب وقت. تواصل معنا عبر ديسكورد أو تيليجرام.</p>
-                        </div>
-                    </div>
-
-                    <div class="page-right">
-                        <div class="purchase-panel">
-                            <div class="panel-label">اختر مستوى المفتاح</div>
-                            <div class="tier-btn-grid">
-                                <button class="tier-btn" data-tier="rank" onclick="switchTier('rank')">
-                                    <span class="tier-btn-name">مفتاح رانك</span>
-                                </button>
-                                <button class="tier-btn active" data-tier="light" onclick="switchTier('light')">
-                                    <span class="tier-btn-name">مفتاح لايت</span>
-                                </button>
-                            </div>
-                            <div class="panel-divider"></div>
-                            <div class="panel-label">اختر المدة</div>
-                            <div class="duration-grid">
-                                <button class="dur-btn active" data-price="400 جنيه" onclick="selectDur(this,'light')">
-                                    <div class="dur-period">شهري</div>
-                                </button>
-                                <button class="dur-btn" data-price="700 جنيه" onclick="selectDur(this,'light')">
-                                    <div class="dur-period">موسمي</div>
-                                </button>
-                            </div>
-                            <div class="panel-price-display" id="light-price">400 جنيه</div>
+                            <div class="panel-price-display" id="rank-price">249 جنيه</div>
                             <div class="panel-price-note">دفعة واحدة · تسليم فوري</div>
                             <a href="https://t.me/k2nt1" target="_blank" class="buy-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -751,27 +664,6 @@
     </main>
 
     <script>
-        var TIER_TITLES = { rank: 'مفتاح رانك', light: 'مفتاح لايت' };
-
-        function switchTier(key) {
-            var valid = ['rank', 'light'];
-            if (!valid.includes(key)) key = 'rank';
-            valid.forEach(function (k) {
-                var el = document.getElementById(k);
-                if (el) el.classList.toggle('active', k === key);
-            });
-            document.querySelectorAll('.tier-btn').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-tier') === key);
-            });
-            document.title = 'نيكسوس لوب | ' + (TIER_TITLES[key] || 'تفاصيل المفتاح');
-        }
-
-        (function () {
-            var params = new URLSearchParams(window.location.search);
-            var key = (params.get('key') || 'rank').toLowerCase();
-            switchTier(key);
-        })();
-
         function selectDur(btn, keyId) {
             var panel = btn.closest('.purchase-panel');
             panel.querySelectorAll('.dur-btn').forEach(function(b){ b.classList.remove('active'); });
