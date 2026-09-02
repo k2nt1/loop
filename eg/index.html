@@ -407,11 +407,23 @@
         }
 
         /* price display */
+        .panel-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
         .panel-price-display {
             font-size: 36px;
             font-weight: 900;
             color: var(--text-white);
-            margin-bottom: 4px;
+        }
+
+        .panel-price-period {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
         }
 
         .panel-price-note {
@@ -595,14 +607,14 @@
                                     <img src="../4c384148-b6cb-4449-9ecc-09e0e3022aac.jpg" alt="نيكسوس لوب مفتاح رانك" loading="lazy">
                                     <div class="product-img-overlay"></div>
                                     <div class="product-img-corner">غير مكتشف</div>
-                                    <div class="product-img-label">مفتاح رانك</div>
+                                    <div class="product-img-label">رانك</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="page-left">
                         <div class="key-game-label">ببجي موبايل / جيم لوب 32 | 64</div>
-                        <h1 class="key-title">مفتاح رانك</h1>
+                        <h1 class="key-title">رانك</h1>
                         <p class="key-subtitle">مصمم للاعبين التنافسيين. أدوات كشف اماكن الاعداء، تصويب، ماكرو، وحماية من الكشف محسّنة لرفع تصنيف.</p>
 
                         <div class="status-row">
@@ -627,19 +639,10 @@
 
                     <div class="page-right">
                         <div class="purchase-panel">
-                            <div class="panel-label">اختر المدة</div>
-                            <div class="duration-grid">
-                                <button class="dur-btn active" data-price="249 جنيه" onclick="selectDur(this,'rank')">
-                                    <div class="dur-period">أسبوعي</div>
-                                </button>
-                                <button class="dur-btn" data-price="549 جنيه" onclick="selectDur(this,'rank')">
-                                    <div class="dur-period">شهري</div>
-                                </button>
-                                <button class="dur-btn" data-price="1049 جنيه" onclick="selectDur(this,'rank')">
-                                    <div class="dur-period">موسمي</div>
-                                </button>
+                            <div class="panel-price-row">
+                                <div class="panel-price-display" id="rank-price">549 جنيه</div>
+                                <div class="panel-price-period">/ شهري</div>
                             </div>
-                            <div class="panel-price-display" id="rank-price">249 جنيه</div>
                             <div class="panel-price-note">دفعة واحدة · تسليم فوري</div>
                             <a href="https://t.me/k2nt1" target="_blank" class="buy-btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -666,6 +669,11 @@
             btn.classList.add('active');
             var priceEl = document.getElementById(keyId + '-price');
             if (priceEl) priceEl.textContent = btn.getAttribute('data-price');
+            var periodEl = document.getElementById(keyId + '-period');
+            if (periodEl) {
+                var periodText = btn.querySelector('.dur-period').textContent.trim();
+                periodEl.textContent = '/ ' + periodText;
+            }
         }
     </script>
 
